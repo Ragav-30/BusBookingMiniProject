@@ -10,7 +10,7 @@ public class BusBooking {
 		ArrayList<Bus> buses = new ArrayList<Bus>();
 		ArrayList<Booking> bookings = new ArrayList<Booking>();
 
-		buses.add(new Bus(1, true, 15));
+		buses.add(new Bus(1, true, 2));
 		buses.add(new Bus(2, true, 10));
 		buses.add(new Bus(3, false, 15));
 		int useropt = 1;
