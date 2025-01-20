@@ -1,24 +1,17 @@
 package busBookingApp;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class BusBooking {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
-		ArrayList<Bus> buses = new ArrayList<Bus>();
-		ArrayList<Booking> bookings = new ArrayList<Booking>();
+		BusDAO busdao = new BusDAO();
+		busdao.displayBusInfo();
 
-		buses.add(new Bus(1, true, 2));
-		buses.add(new Bus(2, true, 10));
-		buses.add(new Bus(3, false, 15));
 		int useropt = 1;
 		Scanner sc = new Scanner(System.in);
-
-		for (Bus bus : buses) {
-			bus.displayBusInfo();
-		}
 
 		while (useropt == 1) {
 
@@ -28,8 +21,9 @@ public class BusBooking {
 			sc.nextLine();
 			if (useropt == 1) {
 				Booking b = new Booking();
-				if (b.isAvailable(buses, bookings)) {
-					bookings.add(b);
+				if (b.isAvailable()) {
+					BookingDAO book = new BookingDAO();
+					book.addBooking(b);
 					System.out.println("Booking successful");
 				} else {
 					System.out.println("Bus is fully occupied");
